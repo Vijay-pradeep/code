@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Remote Server Connection</title>
+</head>
+<body>
+    <h1>Remote Server Connection</h1>
+    <script>
+        const ipAddress = 'REMOTE_SERVER_IP_ADDRESS';
+        const port = REMOTE_SERVER_PORT;
+
+        // Establishing connection to the remote server
+        try {
+            // Create a new WebSocket connection
+            const socket = new WebSocket(`ws://${ipAddress}:${port}`);
+
+            // WebSocket event handlers
+            socket.onopen = function() {
+                // Connection opened, perform operations on the socket
+                // ...
+                console.log('Connected to the remote server successfully!');
+            };
+
+            socket.onerror = function(error) {
+                // Error occurred while connecting to the remote server
+                console.error('Error connecting to the remote server:', error);
+            };
+
+            socket.onclose = function() {
+                // Connection closed, perform cleanup if necessary
+                // ...
+            };
+        } catch (error) {
+            // Display an error message
+            console.error('Error connecting to the remote server:', error);
+        }
+    </script>
+</body>
+</html>
